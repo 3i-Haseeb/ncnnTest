@@ -1,0 +1,11 @@
+7767517
+9 9
+Input                    input                    0 1 input
+Convolution              /conv1/Conv              1 1 input /Relu_output_0 0=6 1=5 5=1 6=450 9=1
+Pooling                  /pool/MaxPool            1 1 /Relu_output_0 /pool/MaxPool_output_0 1=2 2=2 5=1
+Convolution              /conv2/Conv              1 1 /pool/MaxPool_output_0 /Relu_1_output_0 0=16 1=5 5=1 6=2400 9=1
+Pooling                  /pool_1/MaxPool          1 1 /Relu_1_output_0 /pool_1/MaxPool_output_0 1=2 2=2 5=1
+Flatten                  /Flatten                 1 1 /pool_1/MaxPool_output_0 /Flatten_output_0
+InnerProduct             /fc1/Gemm                1 1 /Flatten_output_0 /Relu_2_output_0 0=120 1=1 2=48000 9=1
+InnerProduct             /fc2/Gemm                1 1 /Relu_2_output_0 /Relu_3_output_0 0=84 1=1 2=10080 9=1
+InnerProduct             /fc3/Gemm                1 1 /Relu_3_output_0 output 0=10 1=1 2=840
